@@ -3,6 +3,7 @@ require "pry"
 
   @answers = ["yes", "no", "maybe", "without a doubt", "most likely", "signs point to yes", "outlook good", "it is certain"]
 @answers2 = @answers.clone
+@answers.uniq!
 
 def menu
   puts "1 Enter your question".colorize(:green)
@@ -20,16 +21,19 @@ def user_selection
   case choice
   when 1
     questions
-  when 2
+   when 2
     add_answers
-  when 3
+   when 3
     print_answers
-  when 4
+   when 4
     reset_answers
-  when 5
+   when 5
     puts "Quitting Goodbye".colorize(:red)
     exit
-  end 
+   else
+    puts "Invalid try again"
+   end
+   menu
 end
 
 def questions
@@ -41,13 +45,12 @@ def questions
 end
 
 def add_answers
-  puts "add a answer".colorize(:blue)
+  puts "Add new answer"
   user_input = gets.chomp
   @answers << user_input
-  user_input = @answers
-  puts "Can not add existing answer"
+   @answers.uniq!
   menu
-end
+  end
 
 def print_answers
 @answers.each_with_index do |answers, index|
@@ -65,4 +68,3 @@ def print_answers
 
 
 menu
-
