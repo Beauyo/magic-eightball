@@ -44,6 +44,8 @@ def add_answers
   puts "add a answer".colorize(:blue)
   user_input = gets.chomp
   @answers << user_input
+  user_input = @answers
+  puts "Can not add existing answer"
   menu
 end
 
